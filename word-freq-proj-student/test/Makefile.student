@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -I/usr/include --std=c99 -Wall -g $(XCFLAGS)
+LDFLAGS = -L/usr/lib/i386-linux-gnu -lrt -lm -lpthread $(XLDFLAGS)
+LDTESTFLAGS = -lcheck $(LDFLAGS)
+OBJS = ../wset.o ../words.o
+
+all: test-all
+
+test-all: test-all.o $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) test-all.o -o test-all $(LDTESTFLAGS)
+
+test-all.o: test-all.c 
+	$(CC) $(CFLAGS) -c test-all.c
+
+clean:
+	rm -f *.o
+	rm -f test-all

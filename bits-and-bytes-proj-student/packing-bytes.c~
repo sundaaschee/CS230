@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(){
+  unsigned char b3 = 202;
+  unsigned char b2 = 254;
+  unsigned char b1 = 186;
+  unsigned char b0 = 190;
+
+  unsigned int u = 0;
+  u = u | (190 << 0) | (186 << 8) | (254 << 16) | (202 << 24);
+
+  printf("%x\n", u);
+  
+}

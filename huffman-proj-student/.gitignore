@@ -1,0 +1,8 @@
+*.ser
+*.hzip
+*.he
+huffd
+huffc
+*.o
+test/public-test
+test/private-test

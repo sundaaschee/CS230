@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "print-char.c" ]; then
+    echo "test04: print-char.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-char" ]; then
+    echo "test04: print-char executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-char" ]; then
+    echo "test04: print-char is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file print-char | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test04: print-char is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "print-char" ]; then
+    echo "test04: print-char failed to execute properly (does not exist) [-2]"
+else
+    if ! (./print-char | ./test/print-char-test > /dev/null); then
+	echo "test04: print-char failed to produce proper output [-2]"
+	echo "Here is a hint:"
+	echo "*************************"
+	./print-char | ./test/print-char-test
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test04 points:" $total

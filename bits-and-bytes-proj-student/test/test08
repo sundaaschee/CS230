@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "extracting-fields.c" ]; then
+    echo "test08: extracting-fields.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "extracting-fields" ]; then
+    echo "test08: extracting-fields executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "extracting-fields" ]; then
+    echo "test08: extracting-fields is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file extracting-fields | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test08: extracting-fields is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "extracting-fields" ]; then
+    echo "test08: extracting-fields failed to execute properly (does not exist) [-2]"
+else
+    if ! diff -q <(./extracting-fields) <(./test/extracting-fields-test) > /dev/null 2>&1; then
+	echo "test08: extracting-fields failed to produce proper output [-2]"
+	echo "here is the difference:"
+	echo "*************************"
+	diff <(./extracting-fields) <(./test/extracting-fields-test)
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test08 points:" $total

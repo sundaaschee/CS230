@@ -1,0 +1,10 @@
+
+((total = 0))
+
+if [ ! -e "bar/baz/kt-quotes.txt" ]; then
+    echo "test05: bar/baz/kt-quotes.txt does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+echo "test05 points:" $total

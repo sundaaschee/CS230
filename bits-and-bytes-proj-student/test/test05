@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "packing-bytes.c" ]; then
+    echo "test05: packing-bytes.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "packing-bytes" ]; then
+    echo "test05: packing-bytes executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "packing-bytes" ]; then
+    echo "test05: packing-bytes is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file packing-bytes | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test05: packing-bytes is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "packing-bytes" ]; then
+    echo "test05: packing-bytes failed to execute properly (does not exist) [-2]"
+else
+    if ! (./packing-bytes | ./test/packing-bytes-test > /dev/null); then
+	echo "test05: packing-bytes failed to produce proper output [-2]"
+	echo "Here is a hint:"
+	echo "*************************"
+	./packing-bytes | ./test/packing-bytes-test
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test05 points:" $total

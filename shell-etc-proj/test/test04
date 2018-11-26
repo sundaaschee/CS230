@@ -1,0 +1,10 @@
+
+((total = 0))
+
+if [ ! -e "fee/fie/touching-copy.txt" ]; then
+    echo "test04: fee/fie/touching-copy.txt does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+echo "test04 points:" $total

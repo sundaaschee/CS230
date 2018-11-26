@@ -1,0 +1,39 @@
+Compiled from "Duck.java"
+public class Duck {
+  public Duck(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field name:Ljava/lang/String;
+       9: return
+
+  public java.lang.String talk();
+    Code:
+       0: new           #3                  // class java/lang/StringBuilder
+       3: dup
+       4: invokespecial #4                  // Method java/lang/StringBuilder."<init>":()V
+       7: ldc           #5                  // String Duck
+       9: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      12: aload_0
+      13: getfield      #2                  // Field name:Ljava/lang/String;
+      16: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      19: ldc           #7                  // String  says Quack!
+      21: invokevirtual #6                  // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      24: invokevirtual #8                  // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      27: areturn
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: new           #9                  // class Duck
+       3: dup
+       4: ldc           #10                 // String Joe
+       6: invokespecial #11                 // Method "<init>":(Ljava/lang/String;)V
+       9: astore_1
+      10: getstatic     #12                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      13: aload_1
+      14: invokevirtual #13                 // Method talk:()Ljava/lang/String;
+      17: invokevirtual #14                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      20: return
+}

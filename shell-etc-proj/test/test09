@@ -1,0 +1,36 @@
+
+
+((total = 0))
+
+if [ ! -e "Duck.java" ]; then
+    echo "test09: Duck.java does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+
+if [ ! -e "Duck.class" ]; then
+    echo "test09: Duck.class does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "fee/quack.txt" ]; then
+    echo "test09: fee/quack.txt does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "ducky.bc" ]; then
+    echo "test09: ducky.bc does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if ! diff ducky.bc lucky.bc > /dev/null 2>&1; then
+    echo "test09: ducky.bc is not the same as lucky.bc [-4]"
+else
+    ((total = total + 4))
+fi
+
+echo "test09 points:" $total

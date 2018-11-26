@@ -1,0 +1,4 @@
+Here is some input for my friendly program.
+This is my program, and it is friendly,
+having many friends, but none of them are
+called Flicka.

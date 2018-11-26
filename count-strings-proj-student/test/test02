@@ -1,0 +1,54 @@
+((total = 0))
+
+if [ -e "count-strings" ]; then
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^a: 218812$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^b: 41576$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^c: 61236$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^d: 125877$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^e: 377948$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     grep -q '^f: 61790$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings a b c d e f | \
+     wc -l | grep -qw '6' ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper amount of output [-1]"
+  fi
+  if cat test/poems.txt | ./count-strings aaa | \
+     grep -q '^aaa: 0$' 2>> /dev/null ; then
+    ((total = total + 1))
+  else
+    echo "test02: count-strings failed to produce proper amount of output [-1]"
+  fi
+fi
+
+echo "test02 points:" $total

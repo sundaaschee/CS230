@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "print-bits.c" ]; then
+    echo "test07: print-bits.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-bits" ]; then
+    echo "test07: print-bits executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-bits" ]; then
+    echo "test07: print-bits is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file print-bits | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test07: print-bits is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "print-bits" ]; then
+    echo "test07: print-bits failed to execute properly (does not exist) [-2]"
+else
+    if ! (./print-bits | ./test/print-bits-test > /dev/null); then
+	echo "test07: print-bits failed to produce proper output [-2]"
+	echo "Here is a hint:"
+	echo "*************************"
+	./print-bits | ./test/print-bits-test
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test07 points:" $total

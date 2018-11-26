@@ -1,0 +1,30 @@
+
+
+((total = 0))
+
+if [ ! -e "duck.c" ]; then
+    echo "test10: duck.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+
+if [ ! -e "duck" ]; then
+    echo "test10: duck executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "fee/cuack.txt" ]; then
+    echo "test10: fee/cuack.txt does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if ! diff fee/quack.txt fee/cuack.txt > /dev/null 2>&1; then
+    echo "test10: fee/cuack.txt is not the same as fee/quack.txt [-4]"
+else
+    ((total = total + 4))
+fi
+
+echo "test10 points:" $total

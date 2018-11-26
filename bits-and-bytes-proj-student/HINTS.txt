@@ -1,0 +1,18 @@
+Woohoo Hints!
+
+Here are few things you should keep in mind as you do this assignment:
+
+* Make sure you type in *everything* exactly as requested.
+* Pay careful attention to newlines in your printf statements.
+* Make sure you are clear about ascii codes.
+* Write out the bitwise operations on paper so you understand exactly
+  what you are doing. Do not be afraid to write some test programs
+  that aid in your understanding of the bitwise operators such as
+  <<, >>, |, and &.
+* Use the hints provided by the test programs to help you in arriving
+  at the solutions.
+* Make sure you use the correct C data types when requested. Remember,
+  in C you can have both *signed* and *unsigned* types - understand
+  exactly what the difference is.
+
+Good luck and have fun!

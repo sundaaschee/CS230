@@ -1,0 +1,18 @@
+((total = 0))
+
+if [ -e "count-strings" ]; then
+    ((total = total + 2))
+else
+    echo "test01: count-strings executable does not exist [-2]"
+fi
+
+if [ -e "count-strings" ]; then
+  if cat /dev/null | ./count-strings abc | \
+     grep -q 'abc: 0' 2>> /dev/null ; then
+    ((total = total + 2))
+  else
+    echo "test01: count-strings failed to produce proper output [-2]"
+  fi
+fi
+
+echo "test01 points:" $total

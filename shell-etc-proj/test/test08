@@ -1,0 +1,16 @@
+
+((total = 0))
+
+if ! grep -q '10000 fee/fie/foo/fum/sorted.txt' bar/baz/kt-quotes.txt 2>> /dev/null; then
+    echo "test08: could not find wc output for sorted.txt in bar/baz/kt-quotes.txt"
+else
+    ((total = total + 2))
+fi
+
+if ! grep -q '99 fee/fie/foo/fum/found.txt' bar/baz/kt-quotes.txt 2>> /dev/null; then
+    echo "test08: could not find wc output for found.txt in bar/baz/kt-quotes.txt"
+else
+    ((total = total + 2))
+fi
+
+echo "test08 points:" $total

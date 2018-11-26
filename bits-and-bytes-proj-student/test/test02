@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "print-int.c" ]; then
+    echo "test02: print-int.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-int" ]; then
+    echo "test02: print-int executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "print-int" ]; then
+    echo "test02: print-int is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file print-int | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test02: print-int is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "print-int" ]; then
+    echo "test02: print-int failed to execute properly (does not exist) [-2]"
+else
+    if ! diff -q <(./print-int) <(./test/print-int-test) > /dev/null 2>&1; then
+	echo "test02: print-int failed to produce proper output [-2]"
+	echo "here is the difference:"
+	echo "*************************"
+        diff <(./print-int) <(./test/print-int-test)
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test02 points:" $total

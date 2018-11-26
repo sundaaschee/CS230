@@ -1,0 +1,41 @@
+
+((total = 0))
+
+if [ ! -e "updating-fields.c" ]; then
+    echo "test09: updating-fields.c does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "updating-fields" ]; then
+    echo "test09: updating-fields executable does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -e "updating-fields" ]; then
+    echo "test09: updating-fields is not an accepted executable format (does not exist) [-2]"
+else
+    if ! file updating-fields | grep -q 'ELF 32-bit LSB executable' 2>> /dev/null; then
+	echo "test09: updating-fields is not an accepted executable format [-2]"
+    else
+	((total = total + 2))
+    fi
+fi
+
+
+if [ ! -e "updating-fields" ]; then
+    echo "test09: updating-fields failed to execute properly (does not exist) [-2]"
+else
+    if ! (./updating-fields | ./test/updating-fields-test > /dev/null); then
+	echo "test09: updating-fields failed to produce proper output [-2]"
+	echo "Here is a hint:"
+	echo "*************************"
+	./updating-fields | ./test/updating-fields-test
+	echo "*************************"
+    else
+	((total = total + 2))
+    fi
+fi
+
+echo "test09 points:" $total

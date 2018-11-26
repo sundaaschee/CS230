@@ -1,0 +1,22 @@
+
+((total = 0))
+
+if [ ! -d "foo" ]; then
+    echo "test01: foo does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -d "bar/baz" ]; then
+    echo "test01: bar/baz does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+if [ ! -d "fee/fie/foo/fum" ]; then
+    echo "test01: fee/fie/foo/fum does not exist [-2]"
+else
+    ((total = total + 2))
+fi
+
+echo "test01 points:" $total

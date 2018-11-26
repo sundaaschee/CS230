@@ -1,0 +1,6 @@
+I think the major good idea in Unix was its clean and simple
+interface: open, close, read, and write. (Ken Thompson)
+In fact, we started off with two or three different shells and the
+shell had life of its own. (Ken Thompson)
+10000 fee/fie/foo/fum/sorted.txt
+99 fee/fie/foo/fum/found.txt
